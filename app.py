@@ -39,8 +39,9 @@ def index():
         f"Available Routes:<br/>"
         f"/api/v1.0/precipitation<br/>"
         f"/api/v1.0/stations"
-        f""
-        f""
+        f"/api/v1.0/stations"
+        f"/api/v1.0/<start>"
+        f"/api/v1.0/<start>/<end>""
     )
 
 @app.route("/api/v1.0/precipitation")
@@ -78,10 +79,8 @@ def temperature(start=None, end=None):
         temps = session.query(func.min(Measurement.tobs), func.avg(Measurement.tobs), func.max(Measurement.tobs)).\
                 filter(Measurement.date >= start).all()
 
-    #convert list of tuples into normal list
     result = list(np.ravel(temps))
 
-    #return json representation of the list
     return jsonify(result)
     session.close()
 
