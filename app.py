@@ -41,7 +41,7 @@ def index():
         f"/api/v1.0/stations"
         f"/api/v1.0/stations"
         f"/api/v1.0/<start>"
-        f"/api/v1.0/<start>/<end>""
+        f"/api/v1.0/<start>/<end>"
     )
 
 @app.route("/api/v1.0/precipitation")
